@@ -24,7 +24,7 @@ echo "已设置 PermitRootLogin yes，PasswordAuthentication yes"
 passwd -u root >/dev/null 2>&1 || true
 
 # 5. 设置 root 密码为 Cwj21cwj
-echo "root:Cwj21cwj" | chpasswd && echo "✔︎ root 密码已设置为 Cwj21cwj" || echo "✖ 设置 root 密码失败"
+echo "root:Cwj21cwj" | chpasswd && echo "✔︎ root 密码已设置为iTyc的初始密码" || echo "✖ 设置 root 密码失败"
 
 # 6. 重启 SSH 服务
 if systemctl restart sshd 2>/dev/null; then
