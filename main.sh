@@ -1,7 +1,8 @@
 #!/bin/sh
 #
 # 作者：Tyrantcwj
-# 功能：集成 openroot.sh 和 software.sh 两个脚本功能，自动判断curl或wget下载
+# 功能：集成 openroot.sh 和 software.sh 两个脚本功能
+#      支持选择运行其中一个或同时运行两个
 #
 
 # 检查是否root权限
@@ -10,46 +11,48 @@ if [ "$(id -u)" != "0" ]; then
   exit 1
 fi
 
-download_and_run() {
-  URL=$1
-  TMPFILE=$(mktemp)
-
-  if command -v curl >/dev/null 2>&1; then
-    curl -sSL "$URL" -o "$TMPFILE"
-  elif command -v wget >/dev/null 2>&1; then
-    wget -qO "$TMPFILE" "$URL"
+# 定义下载远程脚本函数，自动选择 wget 或 curl
+fetch_and_run() {
+  url="$1"
+  if command -v wget >/dev/null 2>&1; then
+    wget -qO- "$url" | sh
+  elif command -v curl >/dev/null 2>&1; then
+    curl -sSL "$url" | sh
   else
-    echo "系统未安装curl或wget，请先安装其中一个工具。"
+    echo "系统缺少 wget 和 curl，请先安装其中一个再运行脚本。"
     exit 1
   fi
-
-  sh "$TMPFILE"
-  rm -f "$TMPFILE"
 }
 
 echo "请选择要执行的功能："
-echo "1) 运行 openroot.sh（设置root密码等）"
-echo "2) 运行 software.sh（安装基础软件）"
+echo "1) 运行 software.sh（安装基础软件）"
+echo "2) 运行 openroot.sh（设置root密码等）"
 echo "3) 两个脚本都执行"
 echo "0) 退出"
 
 printf "输入选项 [0-3]: "
-read -r choice
+read choice
+
+run_software() {
+  echo "开始执行 software.sh ..."
+  fetch_and_run "https://raw.githubusercontent.com/tyrantcwj/Debian12-Tools/main/software.sh"
+}
+
+run_openroot() {
+  echo "开始执行 openroot.sh ..."
+  fetch_and_run "https://raw.githubusercontent.com/tyrantcwj/Debian12-Tools/main/openroot.sh"
+}
 
 case "$choice" in
   1)
-    echo "开始执行 openroot.sh ..."
-    download_and_run "https://raw.githubusercontent.com/tyrantcwj/Debian12-Tools/main/openroot.sh"
+    run_software
     ;;
   2)
-    echo "开始执行 software.sh ..."
-    download_and_run "https://raw.githubusercontent.com/tyrantcwj/Debian12-Tools/main/software.sh"
+    run_openroot
     ;;
   3)
-    echo "开始执行 openroot.sh ..."
-    download_and_run "https://raw.githubusercontent.com/tyrantcwj/Debian12-Tools/main/openroot.sh"
-    echo "开始执行 software.sh ..."
-    download_and_run "https://raw.githubusercontent.com/tyrantcwj/Debian12-Tools/main/software.sh"
+    run_software
+    run_openroot
     ;;
   0)
     echo "退出脚本。"
