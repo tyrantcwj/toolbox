@@ -25,6 +25,6 @@ apt-get update
 # --- 新增代码结束 ---
 
 # 安装基础软件包
-apt-get install -y vim curl wget net-tools iputils-ping passwd sudo expect
+apt-get install -y vim curl wget net-tools iputils-ping passwd sudo
 
 echo "基础软件安装完成！"
