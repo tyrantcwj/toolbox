@@ -1,8 +1,7 @@
 #!/bin/sh
 # openroot.sh
 # 作者：Tyrantcwj
-# 版本：v3（更新于本次对话）
-# 作用：一键开启 Debian 12 上的 SSH root 登录，并自动设置密码
+# 版本：v4（使用 sh 支持语法，自动设置 root 密码）
 
 # 1. 检查是否为 root
 if [ "$(id -u)" -ne 0 ]; then
@@ -24,7 +23,7 @@ echo "已设置 PermitRootLogin yes，PasswordAuthentication yes"
 # 4. 解锁 root 账户（若已锁定）
 passwd -u root >/dev/null 2>&1 || true
 
-# 5. 设置 root 密码为指定值
+# 5. 设置 root 密码为 Cwj21cwj
 echo "root:Cwj21cwj" | chpasswd && echo "✔︎ root 密码已设置为 Cwj21cwj" || echo "✖ 设置 root 密码失败"
 
 # 6. 重启 SSH 服务
