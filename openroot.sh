@@ -3,6 +3,8 @@
 # 作者：Tyrantcwj
 # 版本：v3（更新于本次对话）
 # 作用：一键开启 Debian 12 上的 SSH root 登录，并自动设置密码
+# 0.确保脚本内能找到 chpasswd 命令，追加 PATH 环境变量
+export PATH=$PATH:/usr/sbin
 
 # 1. 检查是否为 root
 if [ "$(id -u)" -ne 0 ]; then
