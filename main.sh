@@ -1,8 +1,9 @@
 #!/bin/sh
 # main.sh
 # 作者：Tyrantcwj
-# 版本：v4（更新于2025-05-18）
+# 版本：v5（更新于2025-05-27）
 # 功能：一键运行 Debian 脚本，提供菜单选择
+
 while true; do
     echo ""
     echo "请选择要执行的功能："
@@ -10,8 +11,9 @@ while true; do
     echo "1) 安装基础软件"
     echo "2) 开启 root 登录"
     echo "3) 安装 Docker"
-    echo "4) 一键开启 BBR" # ✅ [2025-05-18] 添加 BBR 加速功能
-    read -p "输入选项 [0-4]: " option
+    echo "4) 一键开启 BBR"       # ✅ [2025-05-18] 添加 BBR 加速功能
+    echo "5) 安装 sing-web"     # ✅ [2025-05-27] 添加 sing-web 安装功能
+    read -p "输入选项 [0-5]: " option
 
     case $option in
         0)
@@ -36,7 +38,7 @@ while true; do
             sysctl -p > /dev/null
 
             result=$(sysctl net.ipv4.tcp_congestion_control | awk '{print $3}')
-            if [ "$result" == "bbr" ]; then
+            if [ "$result" = "bbr" ]; then
                 echo "✔︎ BBR 已成功开启！"
                 echo "当前拥塞控制算法：$result"
             else
@@ -44,9 +46,12 @@ while true; do
                 echo "当前拥塞控制算法：$result"
             fi
             ;;
+        5)
+            echo "开始安装 sing-web ..."                 # ✅ [2025-05-27] 本次添加
+            bash <(wget -qO- https://raw.githubusercontent.com/sing-web/x-ui/main/install_CN.sh)
+            ;;
         *)
-            echo "无效选项，请输入 0-4 之间的数字。"
+            echo "无效选项，请输入 0-5 之间的数字。"
             ;;
     esac
 done
-
