@@ -14,4 +14,4 @@
 ## 一键启动指令
 
 ```bash
-sh -c "$(wget -qO- https://raw.githubusercontent.com/tyrantcwj/Debian12-Tools/main/main.sh)"
+bash -c "$(wget -qO- https://raw.githubusercontent.com/tyrantcwj/Debian12-Tools/main/main.sh)"
