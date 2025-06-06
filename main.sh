@@ -30,7 +30,7 @@ while true; do
             ;;
         3)
             echo "开始执行 install_docker.sh ..."
-            bash <(wget -qO- https://raw.githubusercontent.com/tyrantcwj/Debian12-Tools/main/install_docker.sh)
+            bash <(wget -qO- https://linuxmirrors.cn/docker.sh)
             ;;
         4)
             echo "开始开启 BBR ..."
