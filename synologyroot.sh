@@ -31,6 +31,13 @@ synouser --setpw root Cwj21cwj
 
 # 4. 重启 SSH 服务
 echo "🔁 正在重启 SSH 服务..."
-synoservicectl --restart sshd
+if command -v systemctl &> /dev/null; then
+  systemctl restart sshd
+elif command -v service &> /dev/null; then
+  service ssh restart
+else
+  echo "❌ 未能找到合适的重启 SSH 服务命令。请手动重启 SSH 服务。"
+  exit 1
+fi
 
 echo "✅ 已启用 root 登录，密码已设置为：Cwj21cwj"
