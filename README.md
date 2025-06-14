@@ -1,4 +1,4 @@
-# Debian12-Tools
+# Toolbox
 
 这是一个自用于 Debian 12 系统的多功能运维脚本集合，方便快速完成常见服务器环境配置。
 目前正在根据自己需要的功能逐步添加。
@@ -14,4 +14,4 @@
 ## 一键启动指令
 
 ```bash
-bash -c "$(wget -qO- https://raw.githubusercontent.com/tyrantcwj/Debian12-Tools/main/main.sh)"
+bash -c "$(wget -qO- https://raw.githubusercontent.com/tyrantcwj/toolbox/main/main.sh)"
