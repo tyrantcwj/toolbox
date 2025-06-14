@@ -1,8 +1,8 @@
 #!/bin/sh
 # main.sh
 # 作者：Tyrantcwj
-# 版本：v5（更新于2025-05-27）
-# 功能：一键运行 Debian 脚本，提供菜单选择
+# 版本：v6（更新于2025-06-14）
+# 功能：一键运行 Debian 脚本，提供菜单选择，新增群晖 root 登录开启功能
 
 while true; do
     echo ""
@@ -13,7 +13,8 @@ while true; do
     echo "3) 安装 Docker"
     echo "4) 一键开启 BBR"       # ✅ [2025-05-18] 添加 BBR 加速功能
     echo "5) 安装 sing-web"     # ✅ [2025-05-27] 添加 sing-web 安装功能
-    read -p "输入选项 [0-5]: " option
+    echo "6) 启用群晖 root 登录" # ✅ [2025-06-14] 本次添加，引用 synologyroot.sh
+    read -p "输入选项 [0-6]: " option
 
     case $option in
         0)
@@ -47,11 +48,15 @@ while true; do
             fi
             ;;
         5)
-            echo "开始安装 sing-web ..."                 # ✅ [2025-05-27] 本次添加
+            echo "开始安装 sing-web ..." 
             bash <(wget -qO- https://raw.githubusercontent.com/sing-web/x-ui/main/install_CN.sh)
             ;;
+        6)
+            echo "开始执行 synologyroot.sh ..." # ✅ [2025-06-14] 本次添加
+            bash <(wget -qO- https://raw.githubusercontent.com/tyrantcwj/Debian12-Tools/main/synologyroot.sh)
+            ;;
         *)
-            echo "无效选项，请输入 0-5 之间的数字。"
+            echo "无效选项，请输入 0-6 之间的数字。"
             ;;
     esac
 done
