@@ -23,11 +23,11 @@ while true; do
             ;;
         1)
             echo "开始执行 install_base.sh ..."
-            bash <(wget -qO- https://raw.githubusercontent.com/tyrantcwj/Debian12-Tools/main/install_base.sh)
+            bash <(wget -qO- https://raw.githubusercontent.com/tyrantcwj/toolbox/main/install_base.sh)
             ;;
         2)
             echo "开始执行 openroot.sh ..."
-            bash <(wget -qO- https://raw.githubusercontent.com/tyrantcwj/Debian12-Tools/main/openroot.sh)
+            bash <(wget -qO- https://raw.githubusercontent.com/tyrantcwj/toolbox/main/openroot.sh)
             ;;
         3)
             echo "开始执行 install_docker.sh ..."
@@ -53,7 +53,7 @@ while true; do
             ;;
         6)
             echo "开始执行 synologyroot.sh ..." # ✅ [2025-06-14] 本次添加
-            bash <(wget -qO- https://raw.githubusercontent.com/tyrantcwj/Debian12-Tools/main/synologyroot.sh)
+            bash <(wget -qO- https://raw.githubusercontent.com/tyrantcwj/toolbox/main/synologyroot.sh)
             ;;
         *)
             echo "无效选项，请输入 0-6 之间的数字。"
