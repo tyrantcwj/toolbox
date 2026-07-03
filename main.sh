@@ -1,7 +1,7 @@
 #!/bin/sh
 # main.sh
 # 作者：Tyrantcwj
-# 版本：v6（更新于2025-06-14）
+# 版本：v7（更新于2026-07-03）
 # 功能：一键运行 Debian 脚本，提供菜单选择，新增群晖 root 登录开启功能
 
 while true; do
@@ -9,7 +9,7 @@ while true; do
     echo "请选择要执行的功能："
     echo "0) 退出"
     echo "1) 安装基础软件"
-    echo "2) 开启 root 登录"
+    echo "2) 开启 root 登录（含 DMIT/cloud-init VPS）"
     echo "3) 安装 Docker"
     echo "4) 一键开启 BBR"       # ✅ [2025-05-18] 添加 BBR 加速功能
     echo "5) 安装 sing-web"     # ✅ [2025-05-27] 添加 sing-web 安装功能

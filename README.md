@@ -9,7 +9,7 @@
 该脚本目前包含以下功能：
 
 1. 安装基础软件（包括常用工具和依赖）
-2. 开启 root 用户 SSH 登录（自动配置 sshd 并设置 root 密码）
+2. 开启 root 用户 SSH 登录（自动配置 sshd 并设置 root 密码，兼容 DMIT 等 cloud-init 云 VPS）
 3. 安装 Docker 环境
 4. 一键开启 BBR 加速
 5. 安装 sing-web 面板
