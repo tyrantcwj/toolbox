@@ -1,7 +1,7 @@
 #!/bin/bash
 # main.sh
 # 作者：Tyrantcwj
-# 版本：v8（更新于2026-09-12）
+# 版本：v9（更新于2026-10-20）
 # 功能：一键运行 Debian 12/13 运维脚本菜单
 
 show_os_info() {
@@ -20,7 +20,7 @@ while true; do
     echo "2) 开启 root 登录（Debian 12/13 + DMIT/cloud-init）"
     echo "3) 安装 Docker"
     echo "4) 一键开启 BBR"
-    echo "5) 安装 sing-web"
+    echo "5) 安装iTyc-XUI面板"
     echo "6) 启用群晖 root 登录"
     read -r -p "输入选项 [0-6]: " option
 
@@ -61,8 +61,8 @@ while true; do
             fi
             ;;
         5)
-            echo "开始安装 sing-web ..."
-            bash <(wget -qO- https://raw.githubusercontent.com/sing-web/x-ui/main/install_CN.sh)
+            echo "开始安装 iTyc-XUI 面板 ..."
+            bash <(wget -qO- https://raw.githubusercontent.com/tyrantcwj/x-ui/main/install_CN.sh)
             ;;
         6)
             echo "开始执行 synologyroot.sh ..."

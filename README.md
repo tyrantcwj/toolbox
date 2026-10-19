@@ -14,7 +14,7 @@
 2. 开启 root 用户 SSH 登录（处理 `sshd_config.d` / cloud-init 覆盖，兼容 Debian 13 OpenSSH）
 3. 安装 Docker 环境
 4. 一键开启 BBR 加速
-5. 安装 sing-web 面板
+5. 安装iTyc-XUI面板
 6. 启用群晖 root 登录（适用于 DSM，自动修改 sshd_config、设置 root 密码并重启 SSH 服务）
 
 ## 一键启动指令
